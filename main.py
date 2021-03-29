@@ -3,11 +3,8 @@ import config
 import os
 from twilio.http.http_client import TwilioHttpClient
 from twilio.rest import Client
-# MY_LAT = 12.971599
-# MY_LONG = 77.594566
-
-MY_LAT = 33.812729
-MY_LONG = -83.676697
+MY_LAT = 12.971599
+MY_LONG = 77.594566
 auth_token=config.AUTH_TOKEN
 account_sid=config.ACCOUNT_SID
 api_key=config.OWM_API_KEY
@@ -36,8 +33,8 @@ if it_will_rain:
     client = Client(account_sid, auth_token,http_client=proxy_client)
     message = client.messages.create(
         body="It's going to rain today.\nCarry an umbrella ☔🌂 - Muskan",
-        from_='+17044626547',
-        to='+91 99801 45743'
+        from_=config.twilio_phone_num,
+        to=config.my_phone_num
     )
     print(message.status)
 else:
